@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The 69th National Exhibition of Art  เลือกของฉัน</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+  <header>
+    <h1>ผลงานที่ฉันชื่นชอบ  The 69th National Exhibition of Art</h1>
+    <p>รวมภาพถ่ายจริง 5 ชิ้น พร้อมคำบรรยายเหตุผลที่ชื่นชอบ</p>
+  </header>
+  <main class="grid">
+    {% for a in arts %}
+    <article class="card">
+      <img src="/image/{{a.id}}" alt="{{a.title}}">
+      <div class="meta">
+        <h2>{{a.title}}</h2>
+        <p class="sub">{{a.artist or 'ไม่ระบุ'}} • {{a.year or '-'}} • {{a.medium or '-'}}</p>
+        <p>{{a.description_th}}</p>
+      </div>
+    </article>
+    {% else %}
+    <p>ยังไม่มีข้อมูล โปรด seed ข้อมูลบน VM1 ก่อน</p>
+    {% endfor %}
+  </main>
+  <footer>
+    <small>จัดทำเพื่อการศึกษาเท่านั้น</small>
+  </footer>
+</body>
+</html>

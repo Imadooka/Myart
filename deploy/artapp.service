@@ -1,0 +1,15 @@
+# /etc/systemd/system/artapp.service
+[Unit]
+Description=Gunicorn for Art Exhibition App
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/opt/webapp
+Environment="PYTHONPATH=/opt/webapp"
+ExecStart=/usr/bin/gunicorn -w 3 -b 127.0.0.1:8000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target
